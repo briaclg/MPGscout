@@ -172,7 +172,7 @@ class _AccueilLiguePersoState extends State<AccueilLiguePerso> {
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "Ligue Personnalisé",
+                                      "Ligue Personnalisée",
                                       style: TextStyle(
                                         fontFamily: 'Poppins',
                                         fontSize: 24,

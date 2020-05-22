@@ -9,6 +9,7 @@ import 'package:mpgscout/utilities/constants.dart';
 import 'package:mpgscout/utilities/globals.dart' as globals;
 import 'package:mpgscout/utilities/griddashboard.dart';
 
+import 'infosAdversaire/accueil_infos_adversaire.dart';
 import 'liguePerso/infosMercato/accueil_mercato.dart';
 import 'liguePerso/select_ligue_perso.dart';
 
@@ -21,14 +22,14 @@ class _AccueilState extends State<Accueil> {
 
   Future<String> _manageData() async {
     if (globals.dataframe == ''){
-      print('hey');
-    var returnAllData = await _allData(globals.email, globals.password);
-    var returnAccueil = await _getAccueil(returnAllData);
-    return returnAccueil;
+      var returnAllData = await _allData(globals.email, globals.password);
+      var returnAccueil = await _getAccueil(returnAllData);
+      return returnAccueil;
     }else{
       return(globals.dataframe);
     }
   }
+
   _allData(String email, String password) async {
     String url = 'https://mpgtest.herokuapp.com/api/list';
     print(email);
@@ -40,8 +41,7 @@ class _AccueilState extends State<Accueil> {
     String json = jsonEncode(payload);
     Response response = await post(url, body: json);
     globals.dataframe = response.body;
-    print("test");
-    print(response.body);
+
     return response.body;
   }
 
@@ -50,10 +50,13 @@ class _AccueilState extends State<Accueil> {
     String url = 'https://mpgtest.herokuapp.com/api/accueil';
     Map<String, dynamic> payload = {
       'dataframe': jsonDecode(dataframe),
+      'userId': globals.userId
     };
     String json = jsonEncode(payload);
     Response response = await post(url, body: json);
-    globals.dataframeAccueil = response.body;
+    var returGetAccueil = jsonDecode(response.body);
+
+    globals.dataframeAccueil = jsonEncode(returGetAccueil["adversaire"]);
     return response.body;
   }
 
@@ -125,7 +128,7 @@ class _AccueilState extends State<Accueil> {
                                   ),
                                 ),
                                 Text(
-                                  "Bienvenue \nBriac",
+                                  "Bienvenue \n" + globals.user,
                                   style: Theme
                                       .of(context)
                                       .textTheme
@@ -153,7 +156,13 @@ class _AccueilState extends State<Accueil> {
                                       CategoryCard(
                                         title: "Adversaire",
                                         svgSrc: "assets/logo/reward.svg",
-                                        press: () {},
+                                        press: () {
+                                          Navigator.push(
+                                              context, new MaterialPageRoute(
+                                              builder: (context) =>
+                                                  AccueilInfosAdversaire()
+                                          ));
+                                        },
                                       ),
                                       CategoryCard(
                                         title: "Mercato",

@@ -101,34 +101,71 @@ class _ResultatMercatoState extends State<ResultatMercato> {
               }
               //Affichage
               return Scaffold(
-                  body: LayoutBuilder(
-                      builder:
-                          (BuildContext context,
-                          BoxConstraints viewportConstraints) {
-                        return SingleChildScrollView(
-                            child: ConstrainedBox(
-                                constraints:
-                                BoxConstraints(
-                                    minHeight: viewportConstraints
-                                        .maxHeight),
+                backgroundColor: Color(0xFF398AE5),
+                appBar: AppBar(
+                  backgroundColor: Color(0xFF398AE5),
+                  elevation: 0.0,
+                  automaticallyImplyLeading: true,
+                  iconTheme: IconThemeData(color: Colors.white),
+                  actions: <Widget>[
+                    IconButton(
+                      icon: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {},
+                    )
+                  ],
+                ),
+                body: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        "Résultats de la recherche",
+                        style: Theme.of(context).textTheme.display1.apply(
+                          color: Colors.white,
+                          fontWeightDelta: 2,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.all(15.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(35.0),
+                            topRight: Radius.circular(35.0),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                              ],
+                            ),
+                            _headbar(),
+                            SizedBox(height: 10),
+                            Expanded(
+                              child: ListView.builder(
+                                itemCount: _listForDisplay.length,
+                                itemBuilder: (context, index) {
+                                  return getListItemTile(index);
+                                },
 
-                                child: Column(
-                                    children: <Widget>[
-                                      _headbar(),
-                                      Container(
-                                          child: ListView.builder(
-                                            shrinkWrap: true,
-                                            physics: const NeverScrollableScrollPhysics(),
-                                            padding: EdgeInsets.only(top: 15),
-                                            itemCount: _listForDisplay.length,
-                                            itemBuilder: (context, index) {
-                                              return getListItemTile(index);
-                                            },
-                                          ))
-                                    ]
-                                )));
-                      }
-                  ));
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              );
             },
           ),
         ));
@@ -189,7 +226,7 @@ String Position(int post){
                       child: Container(
                         alignment: Alignment.center,
                         child: Text(
-                          "Moyenne",
+                          "Moy.",
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.black54,
@@ -201,7 +238,7 @@ String Position(int post){
                       child: Container(
                         alignment: Alignment.center,
                         child: Text(
-                          "Titu",
+                          "Titu.",
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.black54,

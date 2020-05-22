@@ -24,9 +24,9 @@ class _LoginScreenState extends State<LoginScreen>{
       'email': email,
       'password': password
     };
-    String payloadString = '{""email"":'+_email+',""password"":"'+_password+',""language"":""fr-FR""}';
-    String json = jsonEncode(payloadString);
-    Response response = await post(url, body: json);
+     Map<String, String> headers = {"Content-type": "application/json"};
+     String json = jsonEncode(payload);
+     Response response = await post(url, headers: headers, body: json);
     print(response.body);
     return jsonDecode(response.body);
   }
@@ -117,9 +117,11 @@ class _LoginScreenState extends State<LoginScreen>{
           globals.email = _email;
           globals.password = _password;
 
-          // On récupère le nom de l'utilisateur
-          //var returnGetUser = await _getUser(returnSignIn['token']);
-          globals.user = 'Briac'+ 'Le Guen';
+          var returnSignIn = await _makeSignInRequest(_email, _password);
+        // On récupère le nom de l'utilisateur
+          var returnGetUser = await _getUser(returnSignIn['token']);
+          globals.user = returnGetUser["firstname"] + " " + returnGetUser["lastname"];
+          globals.userId = returnGetUser["id"];
           globals.dataframe = '';
           print("letsgo");
           Navigator.push(context, new MaterialPageRoute(

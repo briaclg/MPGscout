@@ -99,7 +99,7 @@ class _SelectLiguePersoState extends State<SelectLiguePerso>{
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Recomposez vos ligues "
+                              text: "Recomposez vos ligues \n"
                                   "ou formez en des nouvelles",
                               style: TextStyle(
                                 fontSize: 14,
