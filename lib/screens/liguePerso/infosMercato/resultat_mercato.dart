@@ -2,12 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
-import 'package:mpgscout/utilities/constants.dart';
-import 'package:mpgscout/utilities/counter.dart';
 import 'package:mpgscout/utilities/globals.dart' as globals;
-import 'package:mpgscout/utilities/griddashboardligueperso.dart';
 
 
 
@@ -94,7 +90,17 @@ class _ResultatMercatoState extends State<ResultatMercato> {
                           stops: [0.1, 0.4, 0.7, 0.9],
                         ),
                       ),
-                      child: Center(child: Text("Loading ...")),
+                      child: Center(child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+
+                            CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.white),),
+                            SizedBox(height: 15,),
+                          ]
+                      ),),
                     ),
                   ],
                 );

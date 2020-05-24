@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:mpgscout/utilities/constants.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -104,9 +105,9 @@ class _DetailsJoueurLiguePersoState extends State<DetailsJoueurLiguePerso>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF398AE5),
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        backgroundColor: Color(0xFF398AE5),
+        backgroundColor: kPrimaryColor,
         elevation: 0.0,
         automaticallyImplyLeading: true,
         iconTheme: IconThemeData(color: Colors.white),
@@ -118,7 +119,17 @@ class _DetailsJoueurLiguePersoState extends State<DetailsJoueurLiguePerso>{
               if (snapshot.data == null) {
                 return Container(
                   child: Center(
-                    child: Text("Loading ..."),
+                    child:Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+
+                        CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.white),),
+                        SizedBox(height: 15,),
+                      ]
+                  ),
                   ),
                 );
               }

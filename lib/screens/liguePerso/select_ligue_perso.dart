@@ -99,8 +99,8 @@ class _SelectLiguePersoState extends State<SelectLiguePerso>{
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Recomposez vos ligues \n"
-                                  "ou formez en des nouvelles",
+                              text: "Recompose tes ligues \n"
+                                  "ou forme en des nouvelles",
                               style: TextStyle(
                                 fontSize: 14,
                                 color: kBackgroundColor,
@@ -121,7 +121,7 @@ class _SelectLiguePersoState extends State<SelectLiguePerso>{
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Obtenez des stats détaillées",
+                              text: "Obtiens des stats détaillées",
                               style: TextStyle(
                                 fontSize: 14,
                                 color: kBackgroundColor,
@@ -167,7 +167,7 @@ class _SelectLiguePersoState extends State<SelectLiguePerso>{
                                 if (nombreSelection > 0) {
                                   return "Ligue de " + nombreSelection.toString();
                                 }
-                                return "Sélectionnez des joueurs";
+                                return "Sélectionne des joueurs";
                               })()),
                               onPressed: () {
                                 if (nombreSelection > 0) {

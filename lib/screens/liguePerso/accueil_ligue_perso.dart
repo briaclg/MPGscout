@@ -7,7 +7,6 @@ import 'package:http/http.dart';
 import 'package:mpgscout/utilities/constants.dart';
 import 'package:mpgscout/utilities/counter.dart';
 import 'package:mpgscout/utilities/globals.dart' as globals;
-import 'package:mpgscout/utilities/griddashboardligueperso.dart';
 
 import 'infosLigue/accueil_une_ligue.dart';
 import 'joueurs_achetes_ligue_perso.dart';
@@ -124,7 +123,17 @@ class _AccueilLiguePersoState extends State<AccueilLiguePerso> {
                       stops: [0.1, 0.4, 0.7, 0.9],
                     ),
                   ),
-                  child: Center(child: Text("Loading ...")),
+                  child: Center(child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+
+                        CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.white),),
+                        SizedBox(height: 15,),
+                      ]
+                  ),),
                 ),
               ],
             );

@@ -48,7 +48,7 @@ class _SelectMercatoState extends State<SelectMercato>{
 
                   SizedBox(height: 40),
                   SizedBox(height: 16),
-                  Text("Affinez votre Mercato", style: kHeadingextStyle),
+                  Text("Affine ton Mercato", style: kHeadingextStyle),
                   SizedBox(height: 16),
                   Row(
                     children: <Widget>[
@@ -58,7 +58,7 @@ class _SelectMercatoState extends State<SelectMercato>{
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Trouvez des joueurs selon vos critères",
+                              text: "Trouve des joueurs selon tes critères",
                               style: TextStyle(
                                 fontSize: 14,
                                 color: kBackgroundColor,
@@ -78,7 +78,7 @@ class _SelectMercatoState extends State<SelectMercato>{
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Trouvez les meilleurs ratio prix/but",
+                              text: "Trouve les meilleurs ratio prix/but",
                               style: TextStyle(
                                 fontSize: 14,
                                 color: kBackgroundColor,
@@ -99,7 +99,7 @@ class _SelectMercatoState extends State<SelectMercato>{
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Obtenez des stats détaillées",
+                              text: "Obtiens des stats détaillées",
                               style: TextStyle(
                                 fontSize: 14,
                                 color: kBackgroundColor,

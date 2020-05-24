@@ -6,7 +6,7 @@ import 'package:mpgscout/utilities/globals.dart' as globals;
 import 'package:http/http.dart';
 import 'dart:convert';
 
-import 'accueil.dart';
+import 'Accueil/accueil.dart';
 
 class LoginScreen extends StatefulWidget{
   @override
@@ -120,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen>{
           var returnSignIn = await _makeSignInRequest(_email, _password);
         // On récupère le nom de l'utilisateur
           var returnGetUser = await _getUser(returnSignIn['token']);
-          globals.user = returnGetUser["firstname"] + " " + returnGetUser["lastname"];
+          globals.user = returnGetUser["firstname"];
           globals.userId = returnGetUser["id"];
           globals.dataframe = '';
           print("letsgo");

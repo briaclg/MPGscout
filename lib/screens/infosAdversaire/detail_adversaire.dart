@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:mpgscout/screens/infosAdversaire/General/classement_equipe_prefere.dart';
+import 'package:mpgscout/utilities/constants.dart';
 import 'package:mpgscout/utilities/globals.dart' as globals;
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -302,15 +303,25 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
                       stops: [0.1, 0.4, 0.7, 0.9],
                     ),
                   ),
-                  child: Center(child: Text("Loading ...")),
+                  child: Center(child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+
+                        CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.white),),
+                        SizedBox(height: 15,),
+                      ]
+                  ),),
                 ),
               ],
             );
           }
           return Scaffold(
-              backgroundColor: Color(0xFF398AE5),
+              backgroundColor: kPrimaryColor,
               appBar: AppBar(
-                backgroundColor: Color(0xFF398AE5),
+                backgroundColor: kPrimaryColor,
                 elevation: 0.0,
                 automaticallyImplyLeading: true,
                 iconTheme: IconThemeData(color: Colors.white),
@@ -375,7 +386,7 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
                                                           SizedBox(height: 30,),
                                                           percentSucessString(),
                                                           SizedBox(height: 40,),
-                                                          ListeRankingTime(listForDisplay: _listForRanking,),
+                                                          _listForRanking.length > 1 ? ListeRankingTime(listForDisplay: _listForRanking,):Container(),
                                                           SizedBox(height: 40,),
                                                           ListePrixPosition(listForDisplay: _listForMoney),
                                                           SizedBox(height: 40,),
@@ -426,7 +437,7 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
                                                           SizedBox(height: 30,),
                                                           PrixString(prixDef),
                                                           SizedBox(height: 40,),
-                                                          ListeAvgEvo(listForDisplayEvo: _listDefEvo,listForDisplayAvg: _listDefAvg),
+                                                          _listDefEvo.length > 1 ? ListeAvgEvo(listForDisplayEvo: _listDefEvo,listForDisplayAvg: _listDefAvg):Container(),
                                                           SizedBox(height: 40,),
                                                           ListeJoueurCher(
                                                               listForDisplay: _listDefCher),
@@ -447,7 +458,7 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
                                                           SizedBox(height: 30,),
                                                           PrixString(prixMil),
                                                           SizedBox(height: 40,),
-                                                          ListeAvgEvo(listForDisplayEvo: _listMilEvo,listForDisplayAvg: _listMilAvg),
+                                                          _listMilEvo.length > 1 ?  ListeAvgEvo(listForDisplayEvo: _listMilEvo,listForDisplayAvg: _listMilAvg): Container(),
                                                           SizedBox(height: 40,),
                                                           ListeJoueurCher(
                                                               listForDisplay: _listMilCher),
@@ -468,7 +479,7 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
                                                           SizedBox(height: 30,),
                                                           PrixString(prixAtt),
                                                           SizedBox(height: 40,),
-                                                          ListeAvgEvo(listForDisplayEvo: _listAttEvo,listForDisplayAvg: _listAttAvg),
+                                                          _listAttEvo.length > 1 ? ListeAvgEvo(listForDisplayEvo: _listAttEvo,listForDisplayAvg: _listAttAvg): Container(),
                                                           SizedBox(height: 40,),
                                                           ListeJoueurCher(
                                                               listForDisplay: _listAttCher),

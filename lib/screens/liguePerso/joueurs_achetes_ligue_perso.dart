@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
+import 'package:mpgscout/utilities/constants.dart';
 import 'package:mpgscout/utilities/globals.dart' as globals;
 
 import 'detail_joueur.dart';
@@ -102,21 +103,13 @@ class _JoueursAchetesLiguePersoState extends State<JoueursAchetesLiguePerso>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF398AE5),
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        backgroundColor: Color(0xFF398AE5),
+        backgroundColor: kPrimaryColor,
         elevation: 0.0,
         automaticallyImplyLeading: true,
         iconTheme: IconThemeData(color: Colors.white),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          )
-        ],
+
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

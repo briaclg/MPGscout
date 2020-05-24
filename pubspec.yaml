@@ -21,6 +21,8 @@ dependencies:
     sdk: flutter
   syncfusion_flutter_charts: ^1.0.0-beta.4
   flutter_svg: ^0.17.4
+  fl_chart: ^0.9.3
+  moving_average: ^0.1.0-alpha3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -61,6 +63,10 @@ flutter:
     - assets/logo/reward.svg
     - assets/logo/ecommerce.svg
     - assets/logo/dropdown.svg
+    - assets/logo/club.svg
+    - assets/logo/medal.svg
+    - assets/logo/tshirt.svg
+    - assets/logo/football-tv.svg
 
 
   # The following line ensures that the Material Icons font is
@@ -71,8 +77,6 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-Medium.ttf
-          weight: 600
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
 
