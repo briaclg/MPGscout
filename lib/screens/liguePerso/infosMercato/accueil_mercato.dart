@@ -34,6 +34,13 @@ class _SelectMercatoState extends State<SelectMercato>{
   @override
   Widget build(BuildContext){
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kPrimaryColor,
+        elevation: 0.0,
+        automaticallyImplyLeading: true,
+        iconTheme: IconThemeData(color: Colors.white),
+
+      ),
       body: Container(
         decoration: BoxDecoration(
           color: kPrimaryColor,
@@ -41,12 +48,10 @@ class _SelectMercatoState extends State<SelectMercato>{
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(left: 20, top: 30, right: 20, bottom: 20),
+              padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-
-                  SizedBox(height: 40),
                   SizedBox(height: 16),
                   Text("Affine ton Mercato", style: kHeadingextStyle),
                   SizedBox(height: 16),

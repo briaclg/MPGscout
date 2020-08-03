@@ -68,6 +68,9 @@ class ListeEvoTime extends StatelessWidget{
                     dataSource: listForDisplay,
                     splineType: SplineType
                         .monotonic,
+                    markerSettings: MarkerSettings(
+                        isVisible: true
+                    ),
                     enableTooltip: true,
                     xValueMapper: (JoueurEvo data,
                         _) =>

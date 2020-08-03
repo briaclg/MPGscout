@@ -64,6 +64,9 @@ class ListeRankingTime extends StatelessWidget{
                   splineType: SplineType
                       .monotonic,
                   enableTooltip: true,
+                  markerSettings: MarkerSettings(
+                  isVisible: true
+                  ),
                   xValueMapper: (Ranking data,
                       _) =>
                       DateTime
@@ -73,7 +76,8 @@ class ListeRankingTime extends StatelessWidget{
                   yValueMapper: (Ranking data,
                       _) =>
                   data
-                      .ranking,)
+                      .ranking,),
+
               ]
           )
               : Container(),)

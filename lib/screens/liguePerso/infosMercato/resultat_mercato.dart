@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:mpgscout/utilities/constants.dart';
 import 'package:mpgscout/utilities/globals.dart' as globals;
 
 
@@ -107,21 +108,13 @@ class _ResultatMercatoState extends State<ResultatMercato> {
               }
               //Affichage
               return Scaffold(
-                backgroundColor: Color(0xFF398AE5),
+                backgroundColor: kPrimaryColor,
                 appBar: AppBar(
-                  backgroundColor: Color(0xFF398AE5),
+                  backgroundColor: kPrimaryColor,
                   elevation: 0.0,
                   automaticallyImplyLeading: true,
                   iconTheme: IconThemeData(color: Colors.white),
-                  actions: <Widget>[
-                    IconButton(
-                      icon: Icon(
-                        Icons.search,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {},
-                    )
-                  ],
+
                 ),
                 body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

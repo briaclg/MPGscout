@@ -14,7 +14,7 @@ class ListeAvgEvo extends StatelessWidget{
     return new Wrap(
         children: <Widget>[
           Text(
-            "Evolution du prix max et moyen dans le temps",
+            "Evolution du prix max dans le temps",
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
@@ -49,6 +49,7 @@ class ListeAvgEvo extends StatelessWidget{
               }
 
               ),
+
           primaryXAxis: DateTimeAxis(
             intervalType: DateTimeIntervalType
                 .years,
@@ -69,17 +70,20 @@ class ListeAvgEvo extends StatelessWidget{
               dataSource: listForDisplayEvo,
               splineType: SplineType.monotonic,
               enableTooltip: true,
+              markerSettings: MarkerSettings(
+              isVisible: true
+              ),
               xValueMapper: (JoueurEvo data, _) => DateTime.parse(data.buying_date),
               yValueMapper: (JoueurEvo data, _) => data.price_paid,),
 
-            SplineSeries <PriceEvo, DateTime>(
+           /* SplineSeries <PriceEvo, DateTime>(
               name: "Prix Moyen dans le temps",
               animationDuration: 0,
               dataSource: listForDisplayAvg,
               splineType: SplineType.monotonic,
               enableTooltip: false,
               xValueMapper: (PriceEvo data, _) => DateTime.parse(data.date),
-              yValueMapper: (PriceEvo data, _) => data.price,),
+              yValueMapper: (PriceEvo data, _) => data.price,),*/
           ]
 
 

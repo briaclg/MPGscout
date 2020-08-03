@@ -5,6 +5,7 @@ import 'package:mpgscout/utilities/constants.dart';
 import 'package:mpgscout/utilities/globals.dart' as globals;
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'Accueil/accueil.dart';
 
@@ -16,6 +17,7 @@ class LoginScreen extends StatefulWidget{
 class _LoginScreenState extends State<LoginScreen>{
   final formKey = GlobalKey<FormState>();
   String _email, _password;
+  var _controllerPassword = TextEditingController();
 
    _makeSignInRequest(String email, String password) async {
      print('signinrequest');
@@ -24,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen>{
       'email': email,
       'password': password
     };
+
      Map<String, String> headers = {"Content-type": "application/json"};
      String json = jsonEncode(payload);
      Response response = await post(url, headers: headers, body: json);
@@ -118,8 +121,13 @@ class _LoginScreenState extends State<LoginScreen>{
           globals.password = _password;
 
           var returnSignIn = await _makeSignInRequest(_email, _password);
-        // On récupère le nom de l'utilisateur
+
+          print('heys');
+          print(returnSignIn.keys);
+        if (returnSignIn.containsKey('token')) {
           var returnGetUser = await _getUser(returnSignIn['token']);
+
+          // On récupère le nom de l'utilisateur
           globals.user = returnGetUser["firstname"];
           globals.userId = returnGetUser["id"];
           globals.dataframe = '';
@@ -127,7 +135,14 @@ class _LoginScreenState extends State<LoginScreen>{
           Navigator.push(context, new MaterialPageRoute(
               builder: (context) => Accueil()
           ));
-
+        }else{
+          _controllerPassword.clear();
+          Fluttertoast.showToast(
+              msg: "Mauvais e-mail ou mot de passe",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+          );
+        }
 
 
         String test = 'UJ4J3FGM7Q';
@@ -148,6 +163,7 @@ class _LoginScreenState extends State<LoginScreen>{
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextFormField(
+            controller: _controllerPassword,
             obscureText: true,
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(

@@ -41,19 +41,19 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
   String prixDef;
   List<JoueurCher> _listDefCher = List<JoueurCher>();
   List<JoueurEvo> _listDefEvo = List<JoueurEvo>();
-  List<PriceEvo> _listDefAvg = List<PriceEvo>();
+  //List<PriceEvo> _listDefAvg = List<PriceEvo>();
 
   //Défenseur
   String prixMil;
   List<JoueurCher> _listMilCher = List<JoueurCher>();
   List<JoueurEvo> _listMilEvo = List<JoueurEvo>();
-  List<PriceEvo> _listMilAvg = List<PriceEvo>();
+ // List<PriceEvo> _listMilAvg = List<PriceEvo>();
 
   //Défenseur
   String prixAtt;
   List<JoueurCher> _listAttCher = List<JoueurCher>();
   List<JoueurEvo> _listAttEvo = List<JoueurEvo>();
-  List<PriceEvo> _listAttAvg = List<PriceEvo>();
+ // List<PriceEvo> _listAttAvg = List<PriceEvo>();
 
   Future<String> _getDetailAdversaire() async {
     print('detail_adversaire');
@@ -84,19 +84,19 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
       prixDef = positionPaid(response.body, "defenseur");
       _listDefCher = listePositionCher(response.body, "defenseur");
       _listDefEvo = listePosition(response.body, "defenseur");
-      _listDefAvg = listePositionAvg(response.body, "defenseur");
+     // _listDefAvg = listePositionAvg(response.body, "defenseur");
 
       //Mil
       prixMil = positionPaid(response.body, "milieu");
       _listMilCher = listePositionCher(response.body, "milieu");
       _listMilEvo = listePosition(response.body, "milieu");
-      _listMilAvg = listePositionAvg(response.body, "milieu");
+     // _listMilAvg = listePositionAvg(response.body, "milieu");
 
       //Att
       prixAtt = positionPaid(response.body, "attaquant");
       _listAttCher = listePositionCher(response.body, "attaquant");
       _listAttEvo = listePosition(response.body, "attaquant");
-      _listAttAvg = listePositionAvg(response.body, "attaquant");
+    //  _listAttAvg = listePositionAvg(response.body, "attaquant");
 
 
       print('doSomething() executed in ${stopwatch.elapsed}');
@@ -151,7 +151,7 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
     for (int i = 0; i < map.length; i=i+1) {
 
       Map<String, dynamic> dataframeDetailAdversaire = map[i];
-      JoueurCher unDetail = JoueurCher(dataframeDetailAdversaire["name"], dataframeDetailAdversaire["price_paid"],
+      JoueurCher unDetail = JoueurCher(dataframeDetailAdversaire["name"], dataframeDetailAdversaire["price_paid"], dataframeDetailAdversaire["joueur_obtenu"],
           dataframeDetailAdversaire["leagueName"], dataframeDetailAdversaire["buying_date"]);
       detailJoueurCherData.add(unDetail);
     }
@@ -198,9 +198,10 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
     List<dynamic> map = details["gardien"]["joueur_les_plus_cher"];
     for (int i = 0; i < map.length; i=i+1) {
       Map<String, dynamic> dataframeDetailAdversaire = map[i];
-      JoueurCher unDetail = JoueurCher(dataframeDetailAdversaire["name"], dataframeDetailAdversaire["price_paid"],
+      JoueurCher unDetail = JoueurCher(dataframeDetailAdversaire["name"], dataframeDetailAdversaire["price_paid"], dataframeDetailAdversaire["joueur_obtenu"],
           dataframeDetailAdversaire["leagueName"], dataframeDetailAdversaire["buying_date"]);
       detailJoueurCherData.add(unDetail);
+      print(unDetail.joueur_obtenu);
     }
     _listGardienCher = detailJoueurCherData;
 
@@ -214,7 +215,6 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
       detailJoueurCherEvo.add(unDetail);
     }
     _listGardienEvo = detailJoueurCherEvo;
-
   }
 
   positionPaid(String dataframeAdversaire, String post) {
@@ -245,7 +245,7 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
     for (int i = 0; i < map.length; i=i+1) {
 
       Map<String, dynamic> dataframeDetailAdversaire = map[i];
-      JoueurCher unDetail = JoueurCher(dataframeDetailAdversaire["name"], dataframeDetailAdversaire["price_paid"],
+      JoueurCher unDetail = JoueurCher(dataframeDetailAdversaire["name"], dataframeDetailAdversaire["price_paid"], dataframeDetailAdversaire["joueur_obtenu"],
           dataframeDetailAdversaire["leagueName"], dataframeDetailAdversaire["buying_date"]);
       detailPositionCherData.add(unDetail);
     }
@@ -437,7 +437,7 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
                                                           SizedBox(height: 30,),
                                                           PrixString(prixDef),
                                                           SizedBox(height: 40,),
-                                                          _listDefEvo.length > 1 ? ListeAvgEvo(listForDisplayEvo: _listDefEvo,listForDisplayAvg: _listDefAvg):Container(),
+                                                          _listDefEvo.length > 1 ? ListeAvgEvo(listForDisplayEvo: _listDefEvo):Container(),
                                                           SizedBox(height: 40,),
                                                           ListeJoueurCher(
                                                               listForDisplay: _listDefCher),
@@ -458,7 +458,7 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
                                                           SizedBox(height: 30,),
                                                           PrixString(prixMil),
                                                           SizedBox(height: 40,),
-                                                          _listMilEvo.length > 1 ?  ListeAvgEvo(listForDisplayEvo: _listMilEvo,listForDisplayAvg: _listMilAvg): Container(),
+                                                          _listMilEvo.length > 1 ?  ListeAvgEvo(listForDisplayEvo: _listMilEvo): Container(),
                                                           SizedBox(height: 40,),
                                                           ListeJoueurCher(
                                                               listForDisplay: _listMilCher),
@@ -479,7 +479,7 @@ class _DetailsAdversaireState extends State<DetailsAdversaire>{
                                                           SizedBox(height: 30,),
                                                           PrixString(prixAtt),
                                                           SizedBox(height: 40,),
-                                                          _listAttEvo.length > 1 ? ListeAvgEvo(listForDisplayEvo: _listAttEvo,listForDisplayAvg: _listAttAvg): Container(),
+                                                          _listAttEvo.length > 1 ? ListeAvgEvo(listForDisplayEvo: _listAttEvo): Container(),
                                                           SizedBox(height: 40,),
                                                           ListeJoueurCher(
                                                               listForDisplay: _listAttCher),
@@ -596,10 +596,11 @@ class Ranking{
 class JoueurCher{
   final String name;
   final int price_paid;
+  final int joueur_obtenu;
   final String leagueName;
   final String buying_date;
 
-  JoueurCher(this.name, this.price_paid, this.leagueName, this.buying_date, );
+  JoueurCher(this.name, this.price_paid, this.joueur_obtenu, this.leagueName, this.buying_date, );
 }
 
 class Prefere{

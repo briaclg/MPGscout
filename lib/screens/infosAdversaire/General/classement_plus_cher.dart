@@ -47,6 +47,7 @@ class ListeJoueurCher extends StatelessWidget{
     return GestureDetector(
       onTap: () {},
       child: Container(
+          color: listForDisplay[index].joueur_obtenu > 0 ? Colors.green.withOpacity(0.4): Color(0xffFD2E2E).withOpacity(0.4),
             child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[

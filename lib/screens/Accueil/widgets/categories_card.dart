@@ -15,7 +15,8 @@ class AccountCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+        child : Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height*0.12,
       padding: const EdgeInsets.only(left: 3),
@@ -78,16 +79,18 @@ class AccountCard extends StatelessWidget {
                 new IconButton(
                   icon: new Icon(Icons.arrow_forward_ios,color: Colors.black45,),
                   onPressed: () {
-                    Navigator.push(context, new MaterialPageRoute(
-                      builder: (context) => route
-                  ));},
+                    },
                 )
 
               ],
             ),
           ],
         ),
-    ),
-    );
+    ),),
+        onTap: () {
+          Navigator.push(context, new MaterialPageRoute(
+              builder: (context) => route
+          ));
+        });
   }
 }

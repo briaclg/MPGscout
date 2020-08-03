@@ -21,6 +21,7 @@ dependencies:
     sdk: flutter
   syncfusion_flutter_charts: ^1.0.0-beta.4
   flutter_svg: ^0.17.4
+  fluttertoast: ^4.0.0
   fl_chart: ^0.9.3
   moving_average: ^0.1.0-alpha3
 
@@ -34,6 +35,13 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.7.0"
+
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: "assets/launcher/icon.png"
+  image_path_android: "assets/launcher/icon.png"
 
 
 # For information on the generic Dart part of this file, see the
